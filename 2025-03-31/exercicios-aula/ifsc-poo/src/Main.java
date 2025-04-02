@@ -4,8 +4,8 @@ public class Main {
     public static void main(String[] args) {
 
         //exercicio1();
-        exercicio2(args);
-        //exercicio3();
+        //exercicio2(args);
+        exercicio3();
     }
 
     public static void exercicio1() {
@@ -42,8 +42,10 @@ public class Main {
 
         double CF = (MP * 0.9) + (participacao * 0.1);
 
-        System.out.println("Conceito final: " + CF);
-        if (CF >= 6) {
+        int cf_arredondado = (int) Math.round(CF);
+
+        System.out.println("Conceito final: " + cf_arredondado);
+        if (cf_arredondado >= 6) {
             System.out.println("Aprovado");
         } else {
             System.out.println("Reprovado");
@@ -58,6 +60,12 @@ public class Main {
         notas.nextLine();
         System.out.println("Entre com a nota dos alunos separadas por espaço: ");
         String[] notas_alunos = notas.nextLine().split(" ");
+
+        if(notas_alunos.length != n) {
+            System.out.println("Erro: Número de notas não corresponde à quantidade de alunos informada.");
+            notas.close();
+            return;
+        }
 
         int[] asterisco = new int[4];
 
@@ -79,5 +87,6 @@ public class Main {
         System.out.println("6 - 8 | " + "*".repeat(asterisco[2]));
         System.out.println("9 - 10 | " + "*".repeat(asterisco[3]));
 
+        notas.close();
     }
 }
